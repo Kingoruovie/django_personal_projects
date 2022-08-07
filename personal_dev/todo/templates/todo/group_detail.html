@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo Group</title>
+</head>
+<body>
+	<h1>{{ group.name }} </h1>
+	<a href="{% url 'todo:task_create' group.id  %}"><button>Create Task</button></a>
+	{% if task_list %}
+		<h1>Incomplete Task</h1>
+		{% for task in task_list %}
+			{% if not task.status %}
+				<div>
+					<h2><a href="{% url 'todo:task_detail' task.id %}">{{ task.title }}</a></h2>
+					<a href="{% url 'todo:task_update' task.id %}"><button>Edit</button></a>
+					<form method="POST" action="{% url 'todo:task_delete' task.id %}">
+						{% csrf_token %}
+						<button>Delete</button>
+					</form>
+					<form method="POST" action="{% url 'todo:task_tick' task.id %}">
+						{% csrf_token %}
+						<button>Mark</button>
+					</form>
+				</div>
+			{% endif %}
+		{% endfor %}
+		<hr>
+		<h1>Completed Task</h1>
+		{% for task in task_list %}
+			{% if task.status %}
+				<div>
+					<h2><a href="{% url 'todo:task_detail' task.id %}">{{ task.title }}</a></h2>
+					<a href="{% url 'todo:task_update' task.id %}"><button>Edit</button></a>
+					<form method="POST" action="{% url 'todo:task_delete' task.id %}">
+						{% csrf_token %}
+						<button>Delete</button>
+					</form>
+					<form method="POST" action="{% url 'todo:task_tick' task.id %}">
+						{% csrf_token %}
+						<button>Unmark</button>
+					</form>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+</body>
+</html>
