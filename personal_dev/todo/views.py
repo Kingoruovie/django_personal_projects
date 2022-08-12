@@ -15,12 +15,12 @@ slug_default = '-'.join(today.strftime('%A %d %B %Y %I %M%p %S').split(' '))
 def homepage(request):
 	"""Displays a list of all group of task created."""
 
-	groups = TaskGroup.objects.filter(user=request.user)
+	groups = TaskGroup.objects.filter(user=request.user).order_by('-date')
 	context = {
 		'groups': groups,
 	}
 
-	return render(request, 'todo/homepage.html', context)
+	return render(request, 'todo/groups.html', context)
 
 
 # The CRUD for the group which is basically a way to gather a todo list created
@@ -67,7 +67,7 @@ def group_delete(request, pk):
 @login_required(login_url='accounts:login')
 def group_detail(request, pk):
 	group = TaskGroup.objects.get(id=pk)
-	task_list = group.task_set.all()
+	task_list = group.task_set.all().order_by('priority', 'title')
 	context = {
 		'task_list': task_list,
 		'group': group,
@@ -111,7 +111,7 @@ def task_update(request, pk):
 			return redirect('todo:group_detail', task.group.id)
 	else:
 		form = TaskForm(instance=task)
-	return render(request, 'todo/task_create.html', {'form': form})
+	return render(request, 'todo/task_update.html', {'form': form})
 
 @login_required(login_url='accounts:login')
 def task_delete(request, pk):

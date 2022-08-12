@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
+{% extends "todo/homepage.html" %}
+
+{% block header%}
+	<h2>Update Byte</h2>
+{% endblock %}
+
+{% block content %}
 	<form method="POST">
 		{% csrf_token %}
-		<fieldset>
-			<legend>Update Group</legend>
-			{{ form }}
-			<button name='submit'>Update</button>
-		</fieldset>
+		{{ form.as_p }}
+		<button name='submit'>Update</button>
 	</form>
-</body>
-</html>
+{% endblock %}

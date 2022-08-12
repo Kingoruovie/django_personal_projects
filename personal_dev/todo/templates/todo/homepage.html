@@ -1,24 +1,39 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Todo Group</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=p">
+    <link rel="stylesheet" href="{% static '/todo/css/styles.css' %}" type="text/css">
+    <title>BitBytes</title>
 </head>
 <body>
-	<h1>All Groups</h1>
-	<a href="{% url 'todo:group_create' %}"><button>Create Group</button></a>
-	{% for group in groups %}
-		<div>
-			<h2><a href="{% url 'todo:group_detail' group.id %}">{{ group.name }}</a></h2>
-			<h3>by {{ group.user }}</h3>
-			<form method='POST' action="{% url 'todo:group_delete' group.id %}">
-				{% csrf_token %}
-				<button name='delete'>Delete</button>
-			</form>
-			<a href="{% url 'todo:group_update' group.id %}"><button>Update</button></a>
-			
-		</div>
-	{% endfor %}
+	<header>
+	    <ul >
+	        <li><a href="{% url 'accounts:profile_update' %}">user: {{ request.user }}</a></li>
+	        <li><a href="{% url 'todo:homegroup_list' %}">Home</a></li>
+	    </ul>
+	    <h1>BitBytes</h1>
+	    <ul>
+	        <li><a href="{% url 'todo:group_create' %}">Create Byte</a></li>
+	        <form method="POST" action="{% url 'accounts:logout' %}">
+	        	{% csrf_token %}
+	        	<li><input id="nav-log" type="submit" value="Logout"></li>
+	        </form>
+	        
+	    </ul>
+	</header>
+	<div class="profile-pic">
+	    <a href="{% url 'accounts:profile' %}">
+	        <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
+	    </a>
+	</div>
+    <main>
+    	{% block title%}{% endblock %}
+        {% block header %}{% endblock %}
+        <hr class="first">
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>

@@ -1,0 +1,256 @@
+body {
+    margin: 0;
+    background: #B09B71;
+    font-family: Sans-serif;
+}
+
+header {
+    background-color: #87805E;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+header ul {
+    list-style-type: none;
+    margin: 0;
+    display: inline-block;
+}
+
+li, h1 {
+    display: inline-block;   
+    
+}
+
+ul li a, #nav-log {
+    display: inline-block;
+    text-decoration: none;
+    color: #EDDFB3;
+    font-size: 2em;
+    border: 3px solid #EDDFB3;
+    border-radius: 10px;
+}
+
+h1 {
+    margin: 0 100px;
+    padding: 0 30px;
+    margin: 0 120px;
+    color: #EDDFB3;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 3.5em;
+    text-decoration-line: underline;
+}
+
+ul li a:hover {
+    background-color: #B09B71;
+}
+
+
+ul {
+    padding: 0;
+}
+
+ul li:first-child a {
+    margin-right: 150px;
+    margin-left: 0;
+}
+
+div.profile-pic {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+div.profile-pic a img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid #87805E;
+    object-fit: cover;
+}
+
+main {
+    max-width: 50%;
+    background-color: #87805E;
+    margin: 20px auto;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    color: #361500;
+    text-align: center;
+    box-shadow: -3px -3px 3px #361500;
+    font-family: Sans-serif;
+}
+
+.page-title {
+    display: inline-block;
+    margin: 20px 10px 0 10px;
+    border: 3px solid #EDDFB3;
+    font-size: 3em;
+    padding: 15px;
+    color: #EDDFB3;
+    border-radius: 10px;
+}
+
+.bit-title {
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 2.5em;
+    text-decoration-line: underline;
+    margin: 3px auto;
+}
+
+
+hr.second {
+    width: 72%;
+    size: 3px;
+    border-color: #361500;
+    margin: 0;
+}
+
+hr.first {
+    width: 50%;
+    size: 3px;
+    border-color: #361500;
+}
+
+
+.task-title, .task-title-detail {
+    font-family: Sans-serif;
+    font-size: 1.2em;
+    text-decoration-line: none;
+    color: #361500;
+    text-align: justify;
+}
+
+.task-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-auto-rows:  minmax(75px, auto);
+    text-align: left;
+    margin: 0 10px;
+    align-items: center;
+}
+
+form,button{
+    display: inline-block;
+}
+
+
+
+button {
+    font-size: 1.5em;
+    background-color: #B09B71;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-title:hover, .group-title:hover {
+    color: #B09B71;
+}
+
+.True {
+    text-decoration-line: line-through;
+}
+
+a.task-create {
+    text-decoration-line: none;
+    color: #361500;
+    display:  inline-block;
+    border: 3px solid #B09B71;
+    font-size: 2.0em;
+    border-radius: 5px;
+
+}
+
+a.task-create:hover {
+    background-color: #B09B71
+}
+
+input[type="text"] {
+    width: 600px;
+    height: 40px;
+    font-size: 2em;
+    border-radius: 10px;
+    background-color: #B09B71;
+    color: #361500;
+}
+
+input[type="password"] {
+    width: 600px;
+    height: 40px;
+    font-size: 2em;
+    border-radius: 10px;
+    background-color: #B09B71;
+    color: #361500;
+}
+
+input[type="email"] {
+    width: 600px;
+    height: 40px;
+    font-size: 2em;
+    border-radius: 10px;
+    background-color: #B09B71;
+    color: #361500;
+}
+
+
+input[type="submit"] {
+    font-size: 1.5em;
+    background-color: #B09B71;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+label {
+    font-size: 2em;
+    display:  block;
+}
+
+
+textarea {
+    width: 600px;
+    height: 600px;
+    font-size: 2em;
+    border-radius: 10px;
+    background-color: #B09B71;
+    color: #361500;
+}
+
+select {
+    width: auto;
+    height: 40px;
+    font-size: 2em;
+    border-radius: 10px;
+    background-color: #B09B71;
+    color: #361500;
+}
+
+task-title-detail {
+    font-family: Sans-serif;
+    font-size: 1.2em;
+    text-decoration-line: none;
+    color: #361500;
+    text-align: justify;
+}
+
+hr.third {
+    width: 72%;
+    size: 3px;
+    border-color: #361500;   
+}
+
+.group-title {
+    font-family: Sans-serif;
+    font-size: 2em;
+    text-decoration-line: none;
+    color: #361500;
+    text-align: justify;   
+}
+
+#nav-log {
+    background-color: #87805E;
+}
+
+.helptext {
+    display: block;
+    padding: 30px;
+}

@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Homepage</title>
-</head>
-<body>
-	<form method="POST" action="{% url 'accounts:login' %}">
-		{% csrf_token %}
-		<fieldset>
-			<legend>Login</legend>
-			{{ form.as_p }}
-			{% if request.GET.next %}
-				<input type="hidden" name="next" value="{{ request.GET.next }}">
-			{% endif %}
-		</fieldset>
-		<input type="submit" name="submit">
-	</form>
-</body>
-</html>
+{% extends "accounts/base.html" %}
+
+{% block header %}
+	<h2>Login</h2>
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="{% url 'accounts:login' %}">
+	{% csrf_token %}
+		{{ form.as_p }}
+		{% if request.GET.next %}
+			<input type="hidden" name="next" value="{{ request.GET.next }}">
+		{% endif %}
+	<input type="submit" name="submit"><br>
+	<strong>Register if you dont have account<a href="{% url 'accounts:register'%}"> Sign Up</a></strong>
+</form>
+
+{% endblock %}

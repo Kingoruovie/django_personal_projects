@@ -1,21 +1,18 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=p">
+    <link rel="stylesheet" href="{% static '/todo/css/styles.css' %}" type="text/css">
+    <title>BitBytes</title>
 </head>
 <body>
-	{% if request.user.is_authenticated %}
-		<h2><a href="{% url 'accounts:profile' %}">Profile</a></h2>
-		<form method="POST" action="{% url 'accounts:logout' %}">
-			{% csrf_token %}
-			<button name='submit'>Logout</button>
-		</form>
-		<h2><a href="{% url 'todo:homegroup_list' %}">Todo</a></h2>
-	{% else %}
-		<a href="{% url 'accounts:login' %}">Login</a><br>
-		<a href="{% url 'accounts:register' %}">Register</a>
-	{% endif %}
+    <main>
+        {% block header %}{% endblock %}
+        <hr class="first">
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>

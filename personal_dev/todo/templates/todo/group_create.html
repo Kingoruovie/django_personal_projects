@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<form method="POST">
-		{% csrf_token %}
-		<fieldset>
-			<legend>Create Group</legend>
-			{{ form }}
-			<button name='submit'>Create</button>
-		</fieldset>
-	</form>
-</body>
-</html>
+{% extends 'todo/homepage.html' %}
+
+{% block header %}
+	<h2>Create Byte</h2>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+	{% csrf_token %}
+		{{ form }}
+		<button name='submit'>Create</button>
+</form>
+{% endblock %}

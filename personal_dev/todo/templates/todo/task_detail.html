@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<h1>{{ task.title }}</h1>
-	<hr>
-	<p> {{ task.description }}</p>
+{% extends "todo/homepage.html" %}
+
+{% block header%}
+	<h2 style="font-size: 2em;">{{ task.title }}</h2>
+{% endblock %}
+	
+{% block content %}
+	<p class="task-title-detail"> {{ task.description }}</p>
+	<hr class="third">
 	<p> {{ task.priority }} </p>
+	<hr class="third">
 	{% if task.status %}
 		<h3>Completed</h3>
 	{% else %}
 		<h3>Not Completed</h3>
 	{% endif %}
-</body>
-</html>
+{% endblock %}

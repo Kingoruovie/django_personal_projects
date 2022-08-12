@@ -1,14 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, ProfileUpdateForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from .models import UserProfile
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-
-
-def home(request):
-	return render(request, 'accounts/base.html')
 
 
 def login_user(request):
@@ -21,7 +17,7 @@ def login_user(request):
 				print(request.POST.get('next'))
 				return redirect(request.POST.get('next'))
 			else:
-				return redirect('accounts:home')
+				return redirect('todo:homegroup_list')
 	else:
 		form = AuthenticationForm()
 	return render(request, 'accounts/login_form.html', {'form': form})
@@ -33,30 +29,46 @@ def logout_user(request):
 		logout(request)
 		return redirect('accounts:login')
 	else:
-		return HttpResponse('<h1>This page is not accessible</h2>')
+		return render(request, 'todo/forbidden.html')
 
 
 def register_user(request):
 	if request.method == 'POST':
-		form = UserRegisterForm(request.POST)
+		form = UserRegisterForm(request.POST, request.FILES)
 		if form.is_valid():
-			instance = form.save()
-			instance.refresh_from_db()
-
-			profile_pic = request.POST.get('profile_pic')
-			username = form.cleaned_data.get('username')
-			registered_user = User.objects.get(username=username)
-
-			if profile_pic == '':
-				UserProfile.objects.create(user=registered_user)
-			else:
-				UserProfile.objects.create(user=registered_user,profile_pic=profile_pic)
-			return redirect('accounts:home')
+			form.save()
+			return redirect('accounts:login')
 	else:
 		form = UserRegisterForm()
-	return render(request, 'accounts/register_form.html', {'form': form})
+	return render(request, 'accounts/register_form.html', {'form': form,})
 
 
 @login_required(login_url='accounts:login')
 def profile(request):
-	pass
+	if request.method == 'POST':
+		form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
+		if form.is_valid():
+			form.save()
+			return redirect('todo:homegroup_list')
+	else:
+		form = ProfileUpdateForm(instance=request.user.userprofile)
+	return render(request, 'accounts/profile_update.html', {'form': form})
+
+
+@login_required(login_url='accounts:login')
+def profile_update(request):
+	if request.method == 'POST':
+		form = UserRegisterForm(request.POST, instance=request.user)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password1')
+			user = authenticate(request, username=username, password=password)
+			if user:
+				login(request, user)
+				return redirect('todo:homegroup_list')
+	else:
+		form = UserRegisterForm(instance=request.user)
+	return render(request, 'accounts/profile_update.html', {'form': form})
+
+

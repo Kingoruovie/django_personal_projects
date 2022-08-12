@@ -1,0 +1,21 @@
+<header>
+    <ul >
+        <li><a href="#">Profile</a></li>
+        <li><a href="{% url 'todo:homegroup_list' %}">Home</a></li>
+    </ul>
+    <h1>BitBytes</h1>
+    <ul>
+        <li><a href="{% url 'todo:group_create' %}">Create Byte</a></li>
+        <form method="POST" action="{% url 'accounts:logout' %}">
+        	{% csrf_token %}
+        	<li><input id="nav-log" type="submit" value="Logout"></li>
+        	}
+        </form>
+        
+    </ul>
+</header>
+<div class="profile-pic">
+    <a href="#">
+        <img src="{{ request.user.userprofile.profile_pic.url }}" alt="">
+    </a>
+</div>
