@@ -99,7 +99,7 @@ def task_create(request, pk):
 			return redirect('todo:group_detail', group.id)
 	else:
 		form = TaskForm()
-	return render(request, 'todo/task_create.html', {'form': form})
+	return render(request, 'todo/task_create.html', {'form': form,})
 
 @login_required(login_url='accounts:login')
 def task_update(request, pk):

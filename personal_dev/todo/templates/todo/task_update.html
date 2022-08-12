@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-	<form action="POST">
+	<form method="POST">
+		{% csrf_token %}
 		{{ form.as_p }}
 		<button>Update</button>
 	</form>
