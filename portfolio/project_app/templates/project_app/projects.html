@@ -1,0 +1,18 @@
+{% extends 'project_app/base.html' %}
+
+{% block content %}
+<div class="projects-main-container">
+{% for project in projects %}
+	
+	<div class="project-container">
+		<img src="{{ project.image.url }}" alt="project image">
+		<div class="project-description">
+			<h3>{{ project.title}}</h3>
+			<a href="{{ project.github_url }}">View Code</a>
+			<a href="{% url 'project_app:project_detail' project.id %}">Description</a>
+		</div>
+	</div>
+	
+{% endfor %}
+</div>
+{% endblock %}

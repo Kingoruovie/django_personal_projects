@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'project_app/styles/styles.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Redressed">
+    <title>Portfolio Site</title>
+</head>
+<body>
+    
+    <header>
+        <div class="profile">
+            <div class="profile-img">
+                <img src="{% static 'project_app/images/profile.png' %}" alt="Profile Image">
+            </div>
+            <div class="profile-name">Oru Ovie</div>
+        </div>
+        <ul class="nav">
+            <li class="nav-items"><a href="{% url 'project_app:home' %}"><img title="Home" src="{% static 'project_app/images/home-icon-silhouette.png' %}" alt="home icon"></a></li>
+            <li class="nav-items"><a href="{% url 'project_app:all_project' %}"><img title="Project" src="{% static 'project_app/images/suitcase.png' %}" alt="Project icon"></a></li>
+            <li class="nav-items"><a href="{% url 'project_app:resume' %}"><img title="Resume" src="{% static 'project_app/images/resume.png' %}" alt="Resume icon"></a></li>
+        </ul>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+</body>
+</html>

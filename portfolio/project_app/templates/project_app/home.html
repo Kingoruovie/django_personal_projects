@@ -1,0 +1,98 @@
+{% extends 'project_app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+	<div class="main-content">
+        <div class="introduction">
+            <div class="main-image-container">
+                <img src="{% static 'project_app/images/profile.png' %}" alt="">
+            </div>
+            <div>
+                <h1>Oru Ovie</h1>
+                <p>
+                    I am Oru Ovie, currently a 300 level Mathematics student at the University of Benin, Nigeria.
+                    A self-taught programmer, with the zeal to always pursue knowledge. I liked being challenged,
+                    since that is where growth most times comes from. My focus is broken down into the 
+                    following fields: AI, robotics, software engineering, Mathematics.
+                    My profession ranges from being a mathematics tutor, to a software developer and backend developer.
+                    I am currently open for job opportunities, where I would  be challenged and learn as I advance on the job.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="skill-set">
+            <h2>Arsenals</h2>
+            <div class="skill">
+                <div>
+                    <img class="skill-image" src="{% static 'project_app/images/backend.png' %}" alt="">
+                </div>
+                <div class="skill-description">
+                    <h3>Django Developer</h3>
+                    <p>
+                        Quite proficient in Django, from basic CRUD methods, to classed based views, to templates, to forms,
+                        to admin customization, to media queries, to user management, to deployment, to postgresql, to authentication
+                        and authorization, to API, ....<br>
+                        <b>RATING:</b> ⭐⭐⭐
+                    </p>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div>
+                    <img class="skill-image" src="{% static 'project_app/images/python.png' %}" alt="">
+                </div>
+                <div class="skill-description">
+                    <h3>Python Developer</h3>
+                    <p>
+                        Python for automation with the selenium module, basic GUI app and game with tkinter, webscraping with selenium and
+                        beautiful soup, comand line interface programs, web development, data structures and algorithms, .... <br>
+                        <b>RATING:</b> ⭐⭐⭐⭐
+                    </p>
+                </div>
+            </div>
+            
+            <div class="skill">
+                <div>
+                    <img class="skill-image" src="{% static 'project_app/images/microsoft.png' %}" alt="">
+                </div>
+                <div class="skill-description">
+                    <h3>Microsoft Office</h3>
+                    <p>
+                        Word, Excel and Powerpoint. Word once for creating a mathematical document with lot of formulas, excel for basic result
+                        result system and basic data analysis .... <br>
+                        <b>RATING:</b> ⭐⭐⭐
+                    </p>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div>
+                    <img class="skill-image" src="{% static 'project_app/images/html_and_css.png' %}" alt="">
+                </div>
+                <div class="skill-description">
+                    <h3>HTML and CSS</h3>
+                    <p>
+                        Created this portfolio frontend myself and many more and still in the business of adding to my skill everyday. <br>
+                        <b>RATING:</b> ⭐⭐
+                    </p>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div>
+                    <img class="skill-image" src="{% static 'project_app/images/other.jpg' %}" alt="">
+                </div>
+                <div class="skill-description">
+                    <h3>Others</h3>
+                    <p>
+                       A mathematician by profession, basic knowledge of SQL, C++. Worked as an IT technician earlier,
+                       so quite inlined in the area of software installation, operating system setup, hardware replacement ...
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
